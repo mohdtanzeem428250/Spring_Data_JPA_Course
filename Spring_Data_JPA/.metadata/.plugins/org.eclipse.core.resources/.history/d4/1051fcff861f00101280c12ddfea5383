@@ -1,0 +1,100 @@
+package com.data.jpa;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.context.ApplicationContext;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Page;
+import com.data.jpa.entity.User;
+import com.data.jpa.repository.UserRepository;
+import java.util.List;
+@SpringBootApplication
+public class Application 
+{
+	public static void main(String[] args) 
+	{
+		ApplicationContext context=SpringApplication.run(Application.class, args);
+		UserRepository user=context.getBean(UserRepository.class);
+//		User user1=new User();
+//		user1.setName("Tanzeem");
+//		user1.setAddress("Bareilly");
+		
+//		User user1=new User();
+//		user1.setName("Khushi");
+//		user1.setAddress("Delhi");
+//		
+//		user.save(user1);
+		
+		
+//		List<User> list=user.findAll();
+//		list.forEach(items->System.out.println(items));
+		
+		
+//		User u1=user.findById(1).get();
+//		System.out.println(u1);
+		
+//		u1.setName("Rahul");
+//		u1.setAddress("Kerla");
+//		
+		
+//		User u2=user.save(u1);
+//		System.out.println("Updated Data");
+//		System.out.println(u2);
+		
+		
+//		user.delete(u1);
+//		System.out.println("Data Deleted Successfully");
+		
+		
+//		User u2=user.findByName("Tanzeem");
+		
+//		User u3=user.findByAddress("Punjab");
+		
+//		User u4=user.findByNameAndAddress("Tanzeem","Punjab");
+		
+//		List<User> u5=user.findByNameOrAddress("Tanzeem","Punjab");
+//		u5.forEach(items->System.out.println(items));
+		
+		
+//		List<User> u6=user.findByNameIsNull();
+//		u6.forEach(items->System.out.println(items));
+		
+//		List<User> u7=user.findByNameIsNotNull();
+//		u7.forEach(items->System.out.println(items));
+		
+		
+//		List<User> u8=user.findByNameLike("Sohail");
+//		u8.forEach(items->System.out.println(items));
+		
+//		List<User> u9=user.findByNameStartingWith("T");
+//		u9.forEach(items->System.out.println(items));
+		
+//		List<User> u10=user.findByNameContaining("a");
+//		u10.forEach(items->System.out.println(items));
+		
+//		List<User> u11=user.findByOrderByNameDesc();
+//		u11.forEach(items->System.out.println(items));
+		
+		
+//		Boolean b=user.existsByName("Tanzeem");
+//		System.out.println(b);
+		
+		
+		
+//		User u12=user.getUserByNameAndAddress("Tanzeem","Delhi");
+//		System.out.println(u12);
+		
+		
+//		List<User> list=user.searchName("Sohail");
+//		list.forEach(items->System.out.println(items));
+		
+		
+//		List<User> list1=user.getByNameOrAddress("Sohail","Punjab");
+//		list1.forEach(items->System.out.println(items));
+		
+		Pageable pageable=PageRequest.of(0,3);
+		Page<User> page=user.findAll(pageable);
+		page.get().forEach(items->System.out.println(items));
+	}
+
+}

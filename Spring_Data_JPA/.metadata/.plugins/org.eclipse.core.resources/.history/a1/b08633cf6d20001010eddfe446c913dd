@@ -1,0 +1,38 @@
+package com.data.jpa;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.data.jpa.entity.Employee;
+import com.data.jpa.entity.Mobile;
+import com.data.jpa.repository.EmpRepository;
+import com.data.jpa.repository.MobileRepository;
+@SpringBootApplication
+public class Application implements CommandLineRunner
+{
+	@Autowired
+	private EmpRepository employee;
+	@Autowired
+	private MobileRepository mobile;
+	
+	public static void main(String[] args) 
+	{
+		SpringApplication.run(Application.class, args);
+	}
+	@Override
+	public void run(String... args) throws Exception
+	{
+		Employee emp1=new Employee();
+		emp1.setEmpName("Tanzeem");
+		
+		Mobile mobile1=new Mobile();
+		mobile1.setMobileName("Oppo");
+		
+		emp1.setMobile(mobile1);
+		
+		mobile.save(mobile1);
+		employee.save(emp1);
+		System.out.println("Save Success...");
+	}
+}

@@ -1,0 +1,83 @@
+package com.data.jpa;
+import java.util.List;
+import java.util.Arrays;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.data.jpa.entity.Employee;
+import com.data.jpa.entity.Mobile;
+import com.data.jpa.entity.Address;
+import com.data.jpa.repository.EmpRepository;
+import com.data.jpa.repository.MobileRepository;
+@SpringBootApplication
+public class Application implements CommandLineRunner
+{
+	@Autowired
+	private EmpRepository employee;
+	@Autowired
+	private MobileRepository mobile;
+	
+	public static void main(String[] args) 
+	{
+		SpringApplication.run(Application.class, args);
+	}
+	@Override
+	public void run(String... args) throws Exception
+	{
+		/*Employee emp1=new Employee();
+		emp1.setEmpName("Sohail");
+		
+		Mobile mobile1=new Mobile();
+		mobile1.setMobileName("I-Phone");
+		
+		emp1.setMobile(mobile1);
+		mobile1.setEmp(emp1);
+		
+		employee.save(emp1);
+		mobile.save(mobile1);*/
+		
+		
+//		Employee emp2=employee.findById(2).get();
+//	
+//		System.out.println("Id : "+emp2.getId());
+//		System.out.println("Name : "+emp2.getEmpName());
+//		System.out.println("Mobile : "+emp2.getMobile().getMobileName());
+//		
+		
+		
+		
+//		Mobile mobile2=mobile.findById(3).get();
+//		System.out.println("Id : "+mobile2.getId());
+//		System.out.println("Name : "+mobile2.getEmp().getEmpName());
+//		System.out.println("Mobile : "+mobile2.getMobileName());
+		
+		
+		
+		
+		
+		//OneToMany ,   ManyToOne
+		
+		
+		Employee emp1=new Employee();
+		emp1.setEmpName("Tanzeem");
+		
+		Address add1=new Address();
+		add1.setAddress("Odisha");
+		add1.setType("Permanent");
+		
+		Address add2=new Address();
+		add2.setAddress("Uttar Pradesh");
+		add2.setType("Current Address");
+		
+		List<Address> list1=Arrays.asList(add1,add2);
+		emp1.setAddress(list1);
+//		add1.setEmp(emp1);
+		
+		
+		employee.save(emp1);
+		System.out.println("Save Successfully");
+		
+		
+	}
+}

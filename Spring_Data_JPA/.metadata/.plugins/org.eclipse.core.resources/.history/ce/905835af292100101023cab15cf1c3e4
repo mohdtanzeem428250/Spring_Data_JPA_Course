@@ -1,0 +1,45 @@
+package com.data.jpa;
+import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.data.jpa.entity.Employee;
+import com.data.jpa.entity.Mobile;
+import com.data.jpa.repository.EmpRepository;
+import com.data.jpa.repository.MobileRepository;
+@SpringBootApplication
+public class Application implements CommandLineRunner
+{
+	@Autowired
+	private EmpRepository employee;
+	@Autowired
+	private MobileRepository mobile;
+	
+	public static void main(String[] args) 
+	{
+		SpringApplication.run(Application.class, args);
+	}
+	@Override
+	public void run(String... args) throws Exception
+	{
+		/*Employee emp1=new Employee();
+		emp1.setEmpName("Sohail");
+		
+		Mobile mobile1=new Mobile();
+		mobile1.setMobileName("I-Phone");
+		
+		emp1.setMobile(mobile1);
+		
+		mobile.save(mobile1);
+		employee.save(emp1);*/
+		
+		
+		Employee emp2=employee.findById(1).get();
+	
+		System.out.println("Id : "+emp2.getId());
+		System.out.println("Name : "+emp2.getEmpName());
+		System.out.println("Mobile : "+emp2.getMobile().getMobileName());
+		
+	}
+}

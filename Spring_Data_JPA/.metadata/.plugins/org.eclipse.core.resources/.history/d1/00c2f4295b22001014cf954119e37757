@@ -1,0 +1,5 @@
+package com.data.jpa.entity;
+
+public class Product {
+
+}

@@ -1,0 +1,41 @@
+package com.data.jpa.repository;
+import com.data.jpa.entity.User;
+import java.util.List;
+//import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.query.Param;
+import org.springframework.data.domain.Page;
+public interface UserRepository extends JpaRepository<User,Integer>
+{
+//
+//}
+//			//Sorting method and pagination method.
+
+//public interface UserRepository extends CrudRepository<User,Integer>
+//{ 
+	User findByName(String name);
+	User findByAddress(String address);
+	User findByNameAndAddress(String name,String Address);
+	
+	@Query("select u from User u where u.name=?1and u.address=?2")
+	User getUserByNameAndAddress(String name,String Address);
+	
+	@Query("select u from User u where u.name like :name")
+	List<User> searchName(@Param(value="name") String name);
+	
+	@Query("select u from User u where u.name=:name or u.address=:address")
+	List<User> getByNameOrAddress(@Param("name") String name,@Param("address") String address);
+	 
+	List<User> findByNameOrAddress(String name,String address);
+	List<User> findByNameIsNull();
+	List<User> findByNameIsNotNull();
+	List<User> findByNameLike(String name);
+	List<User> findByNameStartingWith(String character);
+	List<User> findByNameContaining(String another);
+	List<User> findByOrderByNameDesc();
+	boolean existsByName(String name);
+	Page<User> findAll(Pageable pageable);
+}

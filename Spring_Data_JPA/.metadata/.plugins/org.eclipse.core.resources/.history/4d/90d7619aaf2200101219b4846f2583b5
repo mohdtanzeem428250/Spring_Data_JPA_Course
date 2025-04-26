@@ -1,0 +1,177 @@
+package com.data.jpa;
+import java.util.List;
+import java.util.Arrays;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
+import org.springframework.boot.SpringApplication;
+import org.springframework.boot.autoconfigure.SpringBootApplication;
+import com.data.jpa.entity.Employee;
+import com.data.jpa.entity.Mobile;
+import com.data.jpa.entity.Address;
+import com.data.jpa.entity.Product;
+import com.data.jpa.entity.Category;
+import com.data.jpa.repository.EmpRepository;
+import com.data.jpa.repository.MobileRepository;
+import com.data.jpa.repository.AddressRepository;
+import com.data.jpa.repository.ProductRepository;
+import com.data.jpa.repository.CategoryRepository;
+@SpringBootApplication
+public class Application implements CommandLineRunner
+{
+	@Autowired
+	private EmpRepository employee;
+	@Autowired
+	private MobileRepository mobile;
+	@Autowired
+	private AddressRepository addressRepo;
+	@Autowired
+	private ProductRepository productRepository;
+	@Autowired
+	private CategoryRepository categoryRepository;
+	
+	public static void main(String[] args) 
+	{
+		SpringApplication.run(Application.class, args);
+	}
+	@Override
+	public void run(String... args) throws Exception
+	{
+		/*Employee emp1=new Employee();
+		emp1.setEmpName("Sohail");
+		
+		Mobile mobile1=new Mobile();
+		mobile1.setMobileName("I-Phone");
+		
+		emp1.setMobile(mobile1);
+		mobile1.setEmp(emp1);
+		
+		employee.save(emp1);
+		mobile.save(mobile1);*/
+		
+		
+//		Employee emp2=employee.findById(2).get();
+//	
+//		System.out.println("Id : "+emp2.getId());
+//		System.out.println("Name : "+emp2.getEmpName());
+//		System.out.println("Mobile : "+emp2.getMobile().getMobileName());
+//		
+		
+		
+		
+//		Mobile mobile2=mobile.findById(3).get();
+//		System.out.println("Id : "+mobile2.getId());
+//		System.out.println("Name : "+mobile2.getEmp().getEmpName());
+//		System.out.println("Mobile : "+mobile2.getMobileName());
+		
+		
+		
+		
+		
+		//OneToMany ,   ManyToOne
+		
+		
+		/*Employee emp1=new Employee();
+		emp1.setEmpName("Tanzeem");
+		
+		Address add1=new Address();
+		add1.setAddress("Odisha");
+		add1.setType("Permanent");
+		add1.setEmp(emp1);
+		
+		Address add2=new Address();
+		add2.setAddress("Uttar Pradesh");
+		add2.setType("Current Address");
+		add2.setEmp(emp1);
+		
+		List<Address> list1=Arrays.asList(add1,add2);
+		emp1.setAddress(list1);
+		
+		
+		employee.save(emp1);
+		System.out.println("Save Successfully");
+		*/
+		
+		
+		
+//		Employee emp3=employee.findById(2).get();  
+//		System.out.println("Employee Name : "+emp3.getEmpName());
+//		emp3.getAddress().forEach(address->System.out.println("Employee Address : "+address.getAddress()+", Employee Type : "+address.getType()));	
+//		
+		
+		
+//		Address add1=addressRepo.findById(3).get();
+//		System.out.println("Address : "+add1.getAddress());
+//		System.out.println("Employee Name : "+add1.getEmp().getEmpName());
+		
+		
+		
+		
+		
+					//ManyToMany
+		
+		
+		/*Category c1=new Category();
+		c1.setCategoryName("Electronics");
+		
+		Category c2=new Category();
+		c2.setCategoryName("Mobile");
+		
+		
+		Product p1=new Product();
+		p1.setProductName("Oppo");	
+		
+		Product p2=new Product();
+		p2.setProductName("Realme Mobile");
+		
+		Product p3=new Product();
+		p3.setProductName("TV");
+		
+		
+		c1.getProducts().add(p1);
+		c1.getProducts().add(p2);
+		c1.getProducts().add(p3);		
+		
+		
+		c2.getProducts().add(p1);
+		c2.getProducts().add(p2);	
+		
+		
+		p1.getCategories().add(c1);
+		p2.getCategories().add(c1);
+		p3.getCategories().add(c1);
+		
+		
+		p1.getCategories().add(c2);
+		p2.getCategories().add(c2);
+		*/
+		
+		
+		
+//		productRepository.save(p1);
+//		productRepository.save(p2);
+//		productRepository.save(p3);
+		
+		
+		
+//		categoryRepository.save(c1);
+//		categoryRepository.save(c2); 
+//		System.out.println("Save Successfully");
+		
+		
+		
+		
+		Category c1=categoryRepository.findById(4).get();
+		System.out.println("Category Name : "+c1.getCategoryName());
+		c1.getProducts().forEach(items->System.out.println("Products Name : "+items.getProductName()));		
+		
+	}
+}
+		
+		
+		
+		
+		
+		
+		
+		
+		
